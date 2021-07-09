@@ -44,6 +44,12 @@
     "**/*.ts",
     "**/*.tsx",
     "components/BaseLayout/index.js",
-    "services/races/singleRace.js"
+    "services/races/singleRace.js",
+    "src/pages/races/[id].js",
+    "services/races/index.js",
+    "services/races/betApiClient.js",
+    "services/participants/index.js",
+    "src/pages/_app.js",
+    "src/pages/indexjs"
   ]
 }
