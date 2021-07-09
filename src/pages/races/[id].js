@@ -83,7 +83,6 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`winner_${i}`}
                         name="winner"
-                        value="winner"
                       />
                     </label>
                   </td>
@@ -95,7 +94,6 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`second_${i}`}
                         name="second"
-                        value="second"
                       />
                     </label>
                   </td>
@@ -107,7 +105,6 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`third_${i}`}
                         name="third"
-                        value="third"
                       />
                     </label>
                   </td>
