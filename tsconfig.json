@@ -39,5 +39,11 @@
     "jsx": "preserve"
   },
   "exclude": ["node_modules", ".next"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/BaseLayout/index.js"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/BaseLayout/index.js",
+    "services/races/singleRace.js"
+  ]
 }
