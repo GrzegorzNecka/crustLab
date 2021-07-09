@@ -19,7 +19,7 @@ export default function Home({ races }) {
   const [allRaces, setAllRaces] = useState([...races]);
   useEffect(() => {
     setAllRaces(setStateOfAllRaces([...races], sortType));
-  }, [sortType]);
+  }, [sortType, races]);
 
   const changeSortType = (e) => setSortType(e.target.value);
 
@@ -36,12 +36,14 @@ export default function Home({ races }) {
 
       <main className="max-w-screen-xl bg-gray-50 m-auto ">
         <div className="bg-purple-800 p-4 flex  justify-center items-center">
-          <label htmlFor="race-select">sort by: </label>
-          <select onChange={changeSortType} name="pets" id="race-select">
-            <option value="">default</option>
-            <option value="actived">actived</option>
-            <option value="inactive">inactive</option>
-          </select>
+          <label htmlFor="race-select">
+            sort by:
+            <select onChange={changeSortType} name="pets" id="race-select">
+              <option value="">default</option>
+              <option value="actived">actived</option>
+              <option value="inactive">inactive</option>
+            </select>
+          </label>
         </div>
 
         <ul className="p-4 flex flex-col justify-center items-center">
