@@ -26,11 +26,8 @@ export default function Home({ races }) {
   return (
     <div>
       <Head>
-        <title>TypeScript starter for Next.js</title>
-        <meta
-          name="description"
-          content="TypeScript starter for Next.js that includes all you need to build amazing apps"
-        />
+        <title>Crust-lab task</title>
+        <meta name="description" content="Crust-lab task for front-end developer position" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
