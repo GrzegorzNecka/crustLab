@@ -1,9 +1,3 @@
-import { ReactChildren, ReactChild } from 'react';
-
-interface BaseProps {
-  children: ReactChild | ReactChildren;
-}
-
 const date = new Date();
 const dateOptions = { weekday: `long`, year: `numeric`, month: `long`, day: `numeric` };
 
@@ -15,7 +9,7 @@ const TopNavigation = ({ name, status }) => (
   </header>
 );
 
-export default function BaseLayout({ children, name, status }: BaseProps) {
+export default function BaseLayout({ children, name, status }) {
   return (
     <>
       <TopNavigation name={name} status={status} />
