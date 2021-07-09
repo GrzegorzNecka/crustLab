@@ -7,11 +7,13 @@ const getSingleRace = async (id) => {
 };
 
 const setDisableUnchecedInputs = (radios) => {
-  Array.from(radios).forEach((radio) => {
-    if (!radio?.checked) {
-      radio.disabled = true;
-    }
-  });
+  if (radios) {
+    Array.from(radios).forEach((radio) => {
+      if (radio.checked === false) {
+        radio.disabled = true;
+      }
+    });
+  }
 };
 
 const resetCheckboxes = (inputs) => {
