@@ -47,21 +47,4 @@ const setCheckedInputs = (tbody, winner, second, third) => {
   }
 };
 
-const setFormPayload = (form, winner, second, third, race) => {
-  const parentWinner = findUpNode(winner, `TR`);
-  const parentSecond = findUpNode(second, `TR`);
-  const parentThird = findUpNode(third, `TR`);
-  const findParticipants = (person) => person.querySelector(`.person-name`).innerText;
-
-  const payload = {
-    race,
-    account: `${form.get(`bet-amount`)} PLN`,
-    winner: findParticipants(parentWinner),
-    second: findParticipants(parentSecond),
-    third: findParticipants(parentThird)
-  };
-
-  return payload;
-};
-
-export { setCheckedInputs, setFormPayload, getSingleRace };
+export { setCheckedInputs, getSingleRace };

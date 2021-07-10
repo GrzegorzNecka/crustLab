@@ -2,7 +2,7 @@ import BaseLayout from 'components/BaseLayout';
 import { getAllRaces } from 'services/races';
 import { getAllParticipants } from 'services/participants';
 import { useEffect, useState, useRef } from 'react';
-import { setCheckedInputs, setFormPayload, getSingleRace } from 'services/races/singleRace';
+import { setCheckedInputs, getSingleRace } from 'services/races/singleRace';
 
 export const getStaticPaths = async () => {
   const races = await getAllRaces();
@@ -44,7 +44,15 @@ export default function RacePage({ race, allParticipants }) {
     }
 
     const form = new FormData(offerForm.current);
-    const payload = setFormPayload(form, winner, second, third, race.name);
+
+    // const payload = setFormPayload(form, winner, second, third, race.name);
+    const payload = {
+      race: race.name,
+      account: `${form.get(`bet-amount`)} PLN`,
+      winner: form.get(`winner`),
+      second: form.get(`second`),
+      third: form.get(`third`)
+    };
 
     alert(JSON.stringify(payload));
   };
@@ -83,6 +91,7 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`winner_${i}`}
                         name="winner"
+                        value={person.body}
                       />
                     </label>
                   </td>
@@ -94,6 +103,7 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`second_${i}`}
                         name="second"
+                        value={person.body}
                       />
                     </label>
                   </td>
@@ -105,6 +115,7 @@ export default function RacePage({ race, allParticipants }) {
                         type="radio"
                         id={`third_${i}`}
                         name="third"
+                        value={person.body}
                       />
                     </label>
                   </td>
