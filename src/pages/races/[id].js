@@ -3,13 +3,14 @@ import { getAllRaces } from 'services/races';
 import { getAllParticipants } from 'services/participants';
 import { useEffect, useState, useRef } from 'react';
 import { setCheckedInputs, getSingleRace } from 'services/races/singleRace';
+import { useRouter } from 'next/router';
 
 export const getStaticPaths = async () => {
   const races = await getAllRaces();
 
   return {
     paths: races.map((race) => ({ params: { id: JSON.stringify(race.id) } })),
-    fallback: false
+    fallback: true
   };
 };
 
@@ -30,7 +31,7 @@ export default function RacePage({ race, allParticipants }) {
   const [third, setThird] = useState(null);
   const tbodyRef = useRef(null);
   const offerForm = useRef(null);
-
+  const router = useRouter();
   useEffect(() => {
     const tbody = tbodyRef.current.childNodes;
     setCheckedInputs(tbody, winner, second, third);
@@ -57,6 +58,10 @@ export default function RacePage({ race, allParticipants }) {
 
     alert(JSON.stringify(payload));
   };
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <BaseLayout name={race.name} status={race.active}>
