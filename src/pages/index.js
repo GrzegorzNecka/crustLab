@@ -8,6 +8,7 @@ export const getStaticProps = async () => {
   const races = await getAllRaces();
 
   return {
+    revalidate: 30,
     props: {
       races
     }
