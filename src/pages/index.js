@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
+import useSWR from 'swr';
+import jsonFetcher from 'utils';
+import betApi from 'services/races/betApiClient';
 import { getAllRaces, setStateOfAllRaces } from 'services/races';
 
 export const getStaticProps = async () => {
   const races = await getAllRaces();
 
   return {
-    revalidate: 30,
     props: {
       races
     }
@@ -16,11 +17,13 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ races }) {
+  const { data } = useSWR(`${betApi.endpointUrl}/races`, jsonFetcher, { initialData: races });
+
   const [sortType, setSortType] = useState(``);
-  const [allRaces, setAllRaces] = useState([...races]);
+  const [allRaces, setAllRaces] = useState([...data]);
   useEffect(() => {
-    setAllRaces(setStateOfAllRaces([...races], sortType));
-  }, [sortType, races]);
+    setAllRaces(setStateOfAllRaces([...data], sortType));
+  }, [sortType, data]);
 
   const changeSortType = (e) => setSortType(e.target.value);
 
