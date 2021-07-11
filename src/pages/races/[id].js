@@ -19,6 +19,7 @@ export const getStaticProps = async (req) => {
   const race = await getSingleRace(id);
 
   return {
+    revalidate: 30,
     props: { race, allParticipants }
   };
 };
